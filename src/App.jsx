@@ -11,19 +11,24 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
+import BasicModal from './components/modal.jsx'
 
 function App() {
+  const [open, setOpen] = useState(false)
+  const [modalContent, setModalContent] = useState(false)
   const [citiesSelectParam, setCitiesSelectParam] = useState({ from: '', to: '' })
-  const [trainsView, setTrainsView] = useState(getTrains())
+  const [trainsView, setTrainsView] = useState(getTrains()) 
 
-  const [fromValue, setFromValue] = useState('')
-  const [toValue, setToValue] = useState('')
-
-  const handleExchange = () => {
-    const temp = fromValue
-    setFromValue(toValue)
-    setToValue(temp)
+  const handleOpenRow = (train) => {
+    console.log('train', train)
+    setModalContent(train)
+    setOpen(true)
   }
+
+  // const handleExchange = () => {
+  //   const { from, to } = citiesSelectParam()
+  //   setCitiesSelectParam({ from: to, to: from })
+  // }
 
   useEffect(() => {
     setTrainsView(getTrains(citiesSelectParam))
@@ -32,6 +37,7 @@ function App() {
   return (
     <>
       <h1 className="text-3xl font-bold underlin">Покупка Билетов</h1>
+      <BasicModal open={open} setOpen={setOpen} modalContent={modalContent} />
       <p className="pt-3">
         Пожалуйста выберете билет который хотите приобрести, для поиска вы можете воспользоваться
         нашим фильтром
@@ -46,11 +52,10 @@ function App() {
             options={cities}
             placeholder={'откуда'}
           />
-          <Button onClick={() => handleExchange()} variant="contained" color="primary">
-            🌀
-          </Button>
+          <Button variant="contained" color="primary"></Button>
           <Select
             className="p-4 w-60"
+            // value={}
             onChange={(selectedOption) => {
               setCitiesSelectParam({ ...citiesSelectParam, to: selectedOption.value })
             }}
@@ -85,6 +90,7 @@ function App() {
               {trainsView.map((train) => (
                 <TableRow
                   className="hover:bg-gray-200"
+                  onClick={() => handleOpenRow(train)}
                   key={train.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
