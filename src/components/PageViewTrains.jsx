@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
-import { cities } from './assets/data/other'
+import { cities } from '../assets/data/other'
 import getTrains from '../assets/furniture/getTrains.js'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import ModalComponent from './components/Modal'
+import ModalComponent from './Modal'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -18,6 +18,8 @@ const PageViewTrains = () => {
   const [modalContent, setModalContent] = useState(false)
   const [citiesSelectParam, setCitiesSelectParam] = useState({ from: '', to: '' })
   const [trainsView, setTrainsView] = useState(getTrains())
+
+  // проверка с редиректом
 
   const handleOpenRow = (train) => {
     console.log('train', train)
