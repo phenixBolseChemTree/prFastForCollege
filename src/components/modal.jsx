@@ -19,7 +19,7 @@ const style = {
   p: 4,
 }
 
-const BasicModal = ({ open, setOpen, modalContent }) => {
+const ModalComponent = ({ open, setOpen, modalContent }) => {
   const { from, to, date, time, price } = modalContent
   // const [open, setOpen] = useState(false)
   // const handleOpen = () => setOpen(true)
@@ -31,7 +31,7 @@ const BasicModal = ({ open, setOpen, modalContent }) => {
     e.preventDefault()
     setOpen(false)
 
-    toast('Билет куплен, с вами свяжется наш оператор!', { type: 'success' })
+    toast('Билет куплен, с вами свяжется наш оператор по последней указанной вами почте!', { type: 'success' })
     form.current.reset()
   }
 
@@ -94,4 +94,4 @@ const BasicModal = ({ open, setOpen, modalContent }) => {
   )
 }
 
-export default BasicModal
+export default ModalComponent

@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import Select from 'react-select'
 import { cities } from './assets/data/other'
-import getTrains from './assets/furniture/getTrains.js'
+import getTrains from '../assets/furniture/getTrains.js'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -14,7 +13,7 @@ import ModalComponent from './components/Modal'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-function App() {
+const PageViewTrains = () => {
   const [open, setOpen] = useState(false)
   const [modalContent, setModalContent] = useState(false)
   const [citiesSelectParam, setCitiesSelectParam] = useState({ from: '', to: '' })
@@ -106,4 +105,4 @@ function App() {
   )
 }
 
-export default App
+export default PageViewTrains
