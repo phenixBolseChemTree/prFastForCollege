@@ -10,14 +10,16 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import Button from '@mui/material/Button'
+// import Button from '@mui/material/Button'
 import BasicModal from './components/modal.jsx'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [open, setOpen] = useState(false)
   const [modalContent, setModalContent] = useState(false)
   const [citiesSelectParam, setCitiesSelectParam] = useState({ from: '', to: '' })
-  const [trainsView, setTrainsView] = useState(getTrains()) 
+  const [trainsView, setTrainsView] = useState(getTrains())
 
   const handleOpenRow = (train) => {
     console.log('train', train)
@@ -43,7 +45,7 @@ function App() {
         нашим фильтром
       </p>
       <div className="flex justify-between items-center flex-col">
-        <div className="justify-between w-[600px] bg-black items-center p-3 flex flex-row">
+        <div className="justify-between w-[600px] items-center p-3 flex flex-row">
           <Select
             className="p-4 w-60"
             onChange={(selectedOption) => {
@@ -52,7 +54,7 @@ function App() {
             options={cities}
             placeholder={'откуда'}
           />
-          <Button variant="contained" color="primary"></Button>
+          {/* <Button variant="contained" color="primary"></Button> */}
           <Select
             className="p-4 w-60"
             // value={}
@@ -105,6 +107,7 @@ function App() {
           </Table>
         </TableContainer>
       </div>
+      <ToastContainer />
     </>
   )
 }
