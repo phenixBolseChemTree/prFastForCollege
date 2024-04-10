@@ -11,10 +11,22 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import ModalComponent from './Modal'
 import { ToastContainer } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 
 const PageViewTrains = () => {
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      navigate('/login')
+    }
+    setIsLoading(false)
+  }, [navigate])
+
   const [open, setOpen] = useState(false)
+
   const [modalContent, setModalContent] = useState(false)
   const [citiesSelectParam, setCitiesSelectParam] = useState({ from: '', to: '' })
   const [trainsView, setTrainsView] = useState(getTrains())
@@ -33,6 +45,11 @@ const PageViewTrains = () => {
 
   return (
     <>
+    {isLoading ? (
+      <></>
+    ) : (
+      // ... ваш код компонента ...
+      <div>
       <h1 className="text-3xl font-bold underlin">Покупка Билетов</h1>
       <ModalComponent open={open} setOpen={setOpen} modalContent={modalContent} />
       <p className="pt-3">
@@ -103,7 +120,9 @@ const PageViewTrains = () => {
         </TableContainer>
       </div>
       <ToastContainer />
-    </>
+      </div>
+    )}
+  </>
   )
 }
 

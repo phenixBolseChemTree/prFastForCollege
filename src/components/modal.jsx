@@ -74,7 +74,7 @@ const ModalComponent = ({ open, setOpen, modalContent }) => {
           <hr className="pb-4" />
           <form className="" ref={form} onSubmit={sendEmail}>
             <label htmlFor="email">
-              Укажите вашу почту, наш сотрудник уточнит и напишет вам на почту
+              <p>Укажите вашу <b>актуальную почту</b></p>
             </label>
             <input
               className="w-[315px] m-2 p-2 rounded-lg border border-black"
